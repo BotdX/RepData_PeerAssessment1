@@ -98,6 +98,8 @@ plot(intervalstepmean,type=&quot;l&quot;)</code></pre>
 <h2>Imputing missing values</h2>
 <pre class="r"><code>print(paste(&quot;The number of rows with missing data is:&quot;, nrow(activity[is.na(activity),])))</code></pre>
 <pre><code>## [1] &quot;The number of rows with missing data is: 2304&quot;</code></pre>
+<pre class="r"><code>print(&quot;Strategy for imputing values is to replace missing values by the average number of steps for that interval across all days.&quot;)</code></pre>
+<pre><code>## [1] &quot;Strategy for imputing values is to replace missing values by the average number of steps for that interval across all days.&quot;</code></pre>
 <pre class="r"><code>impute.mean &lt;- function(x) replace(x, is.na(x), mean(x, na.rm = TRUE))
 pact2=ddply(activity, ~ interval, transform, steps = impute.mean(steps))
 

@@ -69,6 +69,14 @@ print(paste("The number of rows with missing data is:", nrow(activity[is.na(acti
 ```
 
 ```r
+print("Strategy for imputing values is to replace missing values by the average number of steps for that interval across all days.")
+```
+
+```
+## [1] "Strategy for imputing values is to replace missing values by the average number of steps for that interval across all days."
+```
+
+```r
 impute.mean <- function(x) replace(x, is.na(x), mean(x, na.rm = TRUE))
 pact2=ddply(activity, ~ interval, transform, steps = impute.mean(steps))
 
